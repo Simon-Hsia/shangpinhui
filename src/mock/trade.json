@@ -1,0 +1,24 @@
+[
+  {
+    "id": 2254,
+    "userAddress": "昌平水库旁边的洗脚城",
+    "userId": 2,
+    "provinceId": 6,
+    "consignee": "强哥",
+    "phoneNum": "10086",
+    "isDefault": "0",
+    "regionId": 2,
+    "fullAddress": "上海昌平水库旁边的洗脚城"
+  },
+  {
+    "id": 2262,
+    "userAddress": "北京市昌平区北七家镇宏福苑南一区",
+    "userId": 2,
+    "provinceId": 1,
+    "consignee": "帅杨",
+    "phoneNum": "18101085318",
+    "isDefault": "1",
+    "regionId": 1,
+    "fullAddress": "北京北京市昌平区北七家镇宏福苑南一区"
+  }
+]
