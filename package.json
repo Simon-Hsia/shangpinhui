@@ -6,9 +6,9 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-	  "deploy": "npm run build && gh-pages -d dist"
+    "deploy": "npm run build && gh-pages -d dist"
   },
-  "homepage": "https://github.com/Simon-Hsia/shangpinhui",
+  "homepage": "https://simon-hsia.github.io/shangpinhui",
   "dependencies": {
     "axios": "^0.27.2",
     "core-js": "^3.8.3",
