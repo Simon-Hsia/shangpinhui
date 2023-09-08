@@ -14,8 +14,7 @@ const router = new VueRouter({
   scrollBehavior(to, from, savedPosition) {
     // 始终滚动到顶部
     return { y: 0 }
-  },
-  mode: 'hash'
+  }
 })
 
 const blackList = ['/trade', '/pay', '/center/myorder']
