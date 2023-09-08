@@ -1,3 +1,6 @@
+[项目演示链接](https://simon-hsia.github.io/shangpinhui/)
+注意：getBaseCategoryList接口后台不稳定，如确实有需要可在一次获取数据后存在本地，然后mock数据
+
 尚品汇电商购物平台项目开发流程总结
 
 ## 1.项目初始化配置
