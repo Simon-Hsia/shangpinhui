@@ -1,0 +1,1 @@
+"use strict";(self["webpackChunkshangpinhui"]=self["webpackChunkshangpinhui"]||[]).push([[917],{6917:function(n,u,r){r.r(u),r.d(u,{default:function(){return c}});var e=function(){var n=this,u=n._self._c;return u("div",{staticClass:"grouporder-container"},[n._v("团购订单模块")])},s=[],t={name:"GroupQrder"},i=t,a=r(1001),l=(0,a.Z)(i,e,s,!1,null,null,null),c=l.exports}}]);
