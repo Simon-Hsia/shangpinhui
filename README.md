@@ -1,4 +1,4 @@
-尚品汇前台项目总结
+尚品汇电商购物平台项目开发流程总结
 
 ## 1.项目初始化配置
 
@@ -10,44 +10,45 @@
 
 3. Default ([Vue 2]babel,eslint)
 
-4. 必选：Babel、CSS Pre-processors预处理器。
+4. 必选：Babel、CSS Pre-processors 预处理器。
 
-   可选：Linter / Formatter就是Eslint、Router路由
+   可选：Linter / Formatter 就是 Eslint、Router 路由
 
-5. 选2.x，然后输入N不保存路由配置，选择Less
+5. 选 2.x，然后输入 N 不保存路由配置，选择 Less
 
-6. 选择ESLint + Standard config标准配置
+6. 选择 ESLint + Standard config 标准配置
 
-7. 选择Lint on save在每次保存的时候都检查代码规范
+7. 选择 Lint on save 在每次保存的时候都检查代码规范
 
-8. 选择In dedicated config files把配置都放到独立的文件中
+8. 选择 In dedicated config files 把配置都放到独立的文件中
 
-9. 是否将刚才的选项存为预设，还是输入N
+9. 是否将刚才的选项存为预设，还是输入 N
 
 ### 2.项目主要构成
 
-	1. node_modules:放置项目依赖的地方，有时可以查找是否安装了某个依赖
- 	2. public:一般放置一些共用的静态资源，打包上线的时候，public文件夹里面资源原封不动打包到dist文件夹里面，你看里面就是很纯粹的单页面
- 	3. src：程序员源代码文件夹
-      	1. api文件夹存放的是接口
-      	2. assets文件夹：经常放置一些静态资源（图片），assets文件夹里面资源webpack会进行打包为一个模块（js文件夹里面）
-      	3. components文件夹:一般放置非路由组件（或者项目共用的组件）
-      	4. mock存放模拟数据的相关
-      	5. router存放路由相关
-      	6. store是vuex的仓库
-      	7. utils是存放工具类的文件，什么UUID啊request啊之类的
-      	8. views文件夹存放有路由的组件
-      	9.  App.vue 唯一的根组件，最大的组件
-      	10. main.js 入口文件【程序最先执行的文件】
-	4. babel.config.js: babel配置文件，比如把ES6翻译成ES5
-	5. package.json：记录的项目信息，名称、版本、依赖等
-	6. README.md:项目说明文件，就是现在在写的
+    1. node_modules:放置项目依赖的地方，有时可以查找是否安装了某个依赖
+
+2. public:一般放置一些共用的静态资源，打包上线的时候，public 文件夹里面资源原封不动打包到 dist 文件夹里面，你看里面就是很纯粹的单页面
+3. src：程序员源代码文件夹
+   1. api 文件夹存放的是接口
+   2. assets 文件夹：经常放置一些静态资源（图片），assets 文件夹里面资源 webpack 会进行打包为一个模块（js 文件夹里面）
+   3. components 文件夹:一般放置非路由组件（或者项目共用的组件）
+   4. mock 存放模拟数据的相关
+   5. router 存放路由相关
+   6. store 是 vuex 的仓库
+   7. utils 是存放工具类的文件，什么 UUID 啊 request 啊之类的
+   8. views 文件夹存放有路由的组件
+   9. App.vue 唯一的根组件，最大的组件
+   10. main.js 入口文件【程序最先执行的文件】
+4. babel.config.js: babel 配置文件，比如把 ES6 翻译成 ES5
+5. package.json：记录的项目信息，名称、版本、依赖等
+6. README.md:项目说明文件，就是现在在写的
 
 ### 3.项目先手小配置
 
- 1. 想让项目每次保存都自动打开页面？
+1.  想让项目每次保存都自动打开页面？
 
-    package.json的scripts节点下serve属性末尾加上 --open
+    package.json 的 scripts 节点下 serve 属性末尾加上 --open
 
     ```json
     "scripts": {
@@ -57,15 +58,15 @@
     }
     ```
 
-    *不过我不希望这样*
+    _不过我不希望这样_
 
-	2. 关闭eslint功能
+    2.  关闭 eslint 功能
 
-    vue.config.js对外暴露的属性加上lintOnSave : false,*我还是开着的*
+    vue.config.js 对外暴露的属性加上 lintOnSave : false,_我还是开着的_
 
-	3. src文件夹的@快捷符怎么设置？
+    3.  src 文件夹的@快捷符怎么设置？
 
-    jsconfig.json文件里写这个属性
+    jsconfig.json 文件里写这个属性
 
     ```json
     "compilerOptions": {
@@ -82,11 +83,11 @@
         ]
     ```
 
-    很明显exclude规定了在"node_modules", "dist"下不能用这个快捷符
+    很明显 exclude 规定了在"node_modules", "dist"下不能用这个快捷符
 
-	4. 浏览器是不识别less的，项目中要安装less-loader可以转化为css
+    4.  浏览器是不识别 less 的，项目中要安装 less-loader 可以转化为 css
 
-	5. 在public中的index.html中引入
+    5.  在 public 中的 index.html 中引入
 
     ```html
     <!-- 引入清除默认样式的css -->
@@ -97,9 +98,9 @@
 
 ### 1.基础静态组件
 
-​		在components下新建Header和Footer组件，然后去开发文档下复制静态代码贴进去
+​ 在 components 下新建 Header 和 Footer 组件
 
-​		这两个是全局组件，在main.js下引入
+​ 这两个是全局组件，在 main.js 下引入
 
 ```js
 // 引入自定义的全局组件
@@ -109,30 +110,28 @@ Vue.component(Header.name, Header)
 Vue.component(Footer.name, Footer)
 ```
 
-​		然后就在App.vue下直接用
+​ 然后就在 App.vue 下直接用
 
 ```html
 <template>
   <div class="app-container">
-    <Header></Header>
-    <div class="main">
-      ...
-    </div>
-      <-- 这个v-show后面解释，就是有些路由下不需要这个组件 -->
-    <Footer v-show="$route.meta.footerShow"></Footer>
+    <header></header>
+    <div class="main">...</div>
+    <-- 这个v-show后面解释，就是有些路由下不需要这个组件 -->
+    <footer v-show="$route.meta.footerShow"></footer>
   </div>
 </template>
 ```
 
 ### 2.基础路由组件
 
-​		搭建路由组件:Home、Search、Login（没有底部的Footer组件）、Register（没有底部的Footer组件）
+​ 搭建路由组件:Home、Search、Login（没有底部的 Footer 组件）、Register（没有底部的 Footer 组件）
 
-直接在views文件夹下新建这些组件，还是一样的去复制代码
+直接在 views 文件夹下新建这些组件
 
-​		然后就要在router文件夹下新建index.js和routes.js
+​ 然后就要在 router 文件夹下新建 index.js 和 routes.js
 
-​		index.js这样写
+​ index.js 这样写
 
 ```js
 import Vue from 'vue'
@@ -155,10 +154,9 @@ const router = new VueRouter({
 })
 
 export default router
-
 ```
 
-​		routes.js就是路由信息
+​ routes.js 就是路由信息
 
 ```js
 export default [
@@ -178,21 +176,21 @@ export default [
 
 ```
 
-​		然后就需要去App.vue写路由出口
+​ 然后就需要去 App.vue 写路由出口
 
 ```html
 <template>
   <div class="app-container">
-    <Header></Header>
+    <header></header>
     <div class="main">
       <router-view></router-view>
     </div>
-    <Footer v-show="$route.meta.footerShow"></Footer>
+    <footer v-show="$route.meta.footerShow"></footer>
   </div>
 </template>
 ```
 
-​		还有就是main.js下也要引入路由
+​ 还有就是 main.js 下也要引入路由
 
 ```js
 import Vue from 'vue'
@@ -204,15 +202,15 @@ new Vue({
   // $route: 一般获取路由信息【路径、query、params等等】
   // $router: 一般进行编程式导航进行路由跳转【push| replace】
   router,
-  render: h => h(App),
+  render: h => h(App)
 }).$mount('#app')
 ```
 
 ### 3.路由元信息
 
-​		首页|搜索等等底部是有Footer组件，而登录注册是没有Footer组件的，所以在route.js里面使用路由元信息可以决定footer组件的显示与隐藏
+​ 首页|搜索等等底部是有 Footer 组件，而登录注册是没有 Footer 组件的，所以在 route.js 里面使用路由元信息可以决定 footer 组件的显示与隐藏
 
-​		routes.js里这么写
+​ routes.js 里这么写
 
 ```js
 export default [
@@ -236,22 +234,22 @@ export default [
 ]
 ```
 
-​		App.vue里面这样用
+​ App.vue 里面这样用
 
 ```html
 <template>
   <div class="app-container">
     ...
-    <Footer v-show="$route.meta.footerShow"></Footer>
+    <footer v-show="$route.meta.footerShow"></footer>
   </div>
 </template>
 ```
 
 ### 4.路由传参
 
-​		params参数：路由需要占位，程序就崩了，属于URL当中一部分
+​ params 参数：路由需要占位，程序就崩了，属于 URL 当中一部分
 
-​		query参数：路由不需要占位，写法类似于ajax当中query参数
+​ query 参数：路由不需要占位，写法类似于 ajax 当中 query 参数
 
 ```js
 {
@@ -261,7 +259,7 @@ export default [
      * 问题2：怎么样设计让一个params参数可传可不传？
      * 答：首先明白一点，如果路由中需要传递params参数，例如/search/:key。然而在跳转时不给key值，那么跳过去会发现路径完全错误，search都会不见。那怎么兼容这个问题呢？可以在设计路由时在参数后加?号 -> /search/:key?
      * 问题3：如果像上面那样了，但传递的key是个''怎么办？
-     * 答：可以通过给key赋初值解决 -> key: this.key || undefined    不过注意哈，这个params参数就必须有上上题条件，可穿可不穿，即加?号，否则undefined也是么用的
+     * 答：可以通过给key赋初值解决 -> key: this.key || undefined    不过注意哈，这个params参数就必须有上上问条件，可穿可不穿，即加?号，否则undefined也是么用的
      * 问题4：路由组件能不能传prop数据？
      * 答：有三种写法：
      * 一种是在下面写个属性props:true，然后在那边用props接收路由的params参数，即props:['keyword']，这样就不用写this.$route.keyword了，直接keyword
@@ -279,34 +277,35 @@ export default [
 
 ```js
 //第一种:字符串形式
-this.$router.push("/search/" + this.keyword+"?k="+this.keyword.toUpperCase())
+this.$router.push(
+  '/search/' + this.keyword + '?k=' + this.keyword.toUpperCase()
+)
 //第二种:模板字符串
 this.$router.push(`/search/${this.keyword}?k=${this.keyword.toUpperCase()}`)
 //第三种:对象
-this.$router.push({ 
-    name: "search" ,
-    params:{
-        keyword:this.keyword
-    },
-    query:{
-        k:this.keywond.toUpperCase()
-    }
+this.$router.push({
+  name: 'search',
+  params: {
+    keyword: this.keyword
+  },
+  query: {
+    k: this.keywond.toUpperCase()
+  }
 })
-
 ```
 
-## 3.Home首页组件的拆分
+## 3.Home 首页组件的拆分
 
 ### 1.三级联动组件的全局化
 
-​		在main.js里面写
+​ 在 main.js 里面写
 
 ```js
 import TypeNav from '@/components/TypeNav'
 Vue.component(TypeNav.name, TypeNav)
 ```
 
-​		在Home. vue里面写
+​ 在 Home. vue 里面写
 
 ```html
 <template>
@@ -317,11 +316,11 @@ Vue.component(TypeNav.name, TypeNav)
 </template>
 ```
 
-### 2.Home的子组件搭建
+### 2.Home 的子组件搭建
 
-​	在Home文件夹下再多添List Container、Recommend、Rank、Like、Floor、Brand几个文件，还是复制代码
+​ 在 Home 文件夹下再多添 List Container、Recommend、Rank、Like、Floor、Brand 几个文件
 
-​	然后再index. vue引入并使用
+​ 然后再 index. vue 引入并使用
 
 ```html
 <template>
@@ -359,11 +358,11 @@ export default {
 }
 ```
 
-## 4.axios请求相关编写
+## 4.axios 请求相关编写
 
-### 1.axios的二次封装
+### 1.axios 的二次封装
 
-​		在utils下新建request.js
+​ 在 utils 下新建 request.js
 
 ```js
 import axios from 'axios'
@@ -395,9 +394,9 @@ export default request
 
 ```
 
-### 2.API统一管理
+### 2.API 统一管理
 
-​		在api文件夹的index.js这样写，引入刚才的request.js，然后就统一写请求导出给别的模块用
+​ 在 api 文件夹的 index.js 这样写，引入刚才的 request.js，然后就统一写请求导出给别的模块用
 
 ```js
 import request from '@/utils/request.js'
@@ -412,11 +411,11 @@ export const getBaseCategoryList = () =>
 ...
 ```
 
-### 3.nprogress插件的使用
+### 3.nprogress 插件的使用
 
-​		nprogress可以在页面的最上方，每次发请求的时候都显示一个进度条，刷的一下那种
+​ nprogress 可以在页面的最上方，每次发请求的时候都显示一个进度条，刷的一下那种
 
-​		首先在request.js里面引入这个插件（其实是先下载）,然后请求拦截下来先开启start方法，响应后里面调用done方法
+​ 首先在 request.js 里面引入这个插件（其实是先下载）,然后请求拦截下来先开启 start 方法，响应后里面调用 done 方法
 
 ```js
 // 引入进度条
@@ -425,24 +424,22 @@ import 'nprogress/nprogress.css'
 
 // 请求拦截器
 request.interceptors.request.use(config => {
-  nprogress.start()	// start代表进度条开始，done代表结束
+  nprogress.start() // start代表进度条开始，done代表结束
   return config
 })
 
 // 响应拦截器
-request.interceptors.response.use(
-  res => {
-    nprogress.done()
-    return res.data
-  }
-)
+request.interceptors.response.use(res => {
+  nprogress.done()
+  return res.data
+})
 ```
 
 ## 5.vuex
 
-​		vuex是官方提供一个插件，状态管理库，集中式管理项目中组件共用的数据。
+​ vuex 是官方提供一个插件，状态管理库，集中式管理项目中组件共用的数据。
 
-​		在Store文件夹下的idnex.js中这样写
+​ 在 Store 文件夹下的 idnex.js 中这样写
 
 ```js
 import Vue from 'vue'
@@ -475,7 +472,7 @@ export default new Vuex.Store({
 
 ```
 
-​		然后需要在main.js中引入
+​ 然后需要在 main.js 中引入
 
 ```js
 //  引入仓库
@@ -490,7 +487,7 @@ new Vue({
 
 ```
 
-​	例如Search小仓库中这样写
+​ 例如 Search 小仓库中这样写
 
 ```js
 // 引入接口，action向后台要数据
@@ -533,7 +530,7 @@ export default {
 
 ```
 
-​		那怎么在组件中使用仓库呢？比如Search
+​ 那怎么在组件中使用仓库呢？比如 Search
 
 ```js
 // 首先在Search中引入辅助函数，getters的数据用到前者，普通的状态数据用到mapState
@@ -566,9 +563,9 @@ export default {
 
 ### 1.三级联动的动态数据展示
 
-​		在TypeNav组件下就按上面Search的vuex那一套搞就是了，约定俗成叫“三连环”(在API编写接口，然后在小仓库中写action、mutations、state，第三步就是在组件中派发action，这时候仓库中就有数据了)，然后就是mapState或者mapGetters解构到组件中展示了，没什么好说的
+​ 在 TypeNav 组件下就按上面 Search 的 vuex 那一套搞就是了，约定俗成叫“三连环”(在 API 编写接口，然后在小仓库中写 action、mutations、state，第三步就是在组件中派发 action，这时候仓库中就有数据了)，然后就是 mapState 或者 mapGetters 解构到组件中展示了，没什么好说的
 
-​		要注意组件向仓库拿这个数据的时候要分割一下，不然首页位置不够，展示不下
+​ 要注意组件向仓库拿这个数据的时候要分割一下，不然首页位置不够，展示不下
 
 ```js
 ...mapState({
@@ -579,35 +576,32 @@ export default {
 
 ### 2.三级联动的路由跳转与参数传递
 
-​		当点击三级联动的任何一级的任何选项都会跳转到Search中，并且Search会依据关键词（尽管这样跳没有keyword）和category Id发请求展示不同的数据，但每一级所对应的category Id属性都不同，有category1Id，category2Id，category3Id，所以我们在每一级的a标签上都加上data数据
+​ 当点击三级联动的任何一级的任何选项都会跳转到 Search 中，并且 Search 会依据关键词（尽管这样跳没有 keyword）和 category Id 发请求展示不同的数据，但每一级所对应的 category Id 属性都不同，有 category1Id，category2Id，category3Id，所以我们在每一级的 a 标签上都加上 data 数据
 
 ```html
 <div class="all-sort-list2" @click="goSearch">
   ...
-  <a
-     :data-categoryName="item.categoryName"
-     :data-category1Id="item.categoryId"
-  >
-     {{ item.categoryName }}
+  <a :data-categoryName="item.categoryName" :data-category1Id="item.categoryId">
+    {{ item.categoryName }}
   </a>
-      ...
-      <a
-         :data-categoryName="child.categoryName"
-         :data-category2Id="child.categoryId"
-      >
-          {{ child.categoryName }}
-      </a>
-          ...
-          <a
-             :data-categoryName="grandson.categoryName"
-             :data-category3Id="grandson.categoryId"
-           >
-             {{ grandson.categoryName }}
-           </a>
+  ...
+  <a
+    :data-categoryName="child.categoryName"
+    :data-category2Id="child.categoryId"
+  >
+    {{ child.categoryName }}
+  </a>
+  ...
+  <a
+    :data-categoryName="grandson.categoryName"
+    :data-category3Id="grandson.categoryId"
+  >
+    {{ grandson.categoryName }}
+  </a>
 </div>
 ```
 
-​		接着在相应方法中解构出来就能用了
+​ 接着在相应方法中解构出来就能用了
 
 ```js
 goSearch(e) {
@@ -630,23 +624,21 @@ goSearch(e) {
   }
 ```
 
-​		
+​
 
-### 3.Search的三级联动写过渡动画
+### 3.Search 的三级联动写过渡动画
 
-​		可以看到Search的三级联动是默认隐藏的，移入移出控制展示隐藏，并且有淡入淡出的过渡效果。
+​ 可以看到 Search 的三级联动是默认隐藏的，移入移出控制展示隐藏，并且有淡入淡出的过渡效果。
 
-​		所以有个change Show方法，是因为主页需要三级联动默认展开，而Search页面不需要默认展开（有移入移出效果，html第1行），v-show来决定的，就在html的第4行
+​ 所以有个 change Show 方法，是因为主页需要三级联动默认展开，而 Search 页面不需要默认展开（有移入移出效果，html 第 1 行），v-show 来决定的，就在 html 的第 4 行
 
 ```html
-	<div @mouseenter="changeShow(true)" @mouseleave="changeShow(false)">
-       <h2 class="all">全部商品分类</h2>
-       <transition name="sort">
-         <div class="sort" v-show="show">
-           ...
-         </div>
-       </transition>
-    </div>
+<div @mouseenter="changeShow(true)" @mouseleave="changeShow(false)">
+  <h2 class="all">全部商品分类</h2>
+  <transition name="sort">
+    <div class="sort" v-show="show">...</div>
+  </transition>
+</div>
 ```
 
 ```js
@@ -656,25 +648,25 @@ goSearch(e) {
     }
 ```
 
-​		那过渡动画就是这样写的，和上面的transition标签配合用
+​ 那过渡动画就是这样写的，和上面的 transition 标签配合用
 
 ```less
-	// 定义过渡的属性和时长的地方，用active
-    .sort-enter-active,
-    .sort-leave-active {
-      transition: opacity 0.5s;
-    }
+// 定义过渡的属性和时长的地方，用active
+.sort-enter-active,
+.sort-leave-active {
+  transition: opacity 0.5s;
+}
 
-    // 定义过度动画开始和离开结束时的透明度为0
-    .sort-enter,
-    .sort-leave-to {
-      opacity: 0;
-    }
+// 定义过度动画开始和离开结束时的透明度为0
+.sort-enter,
+.sort-leave-to {
+  opacity: 0;
+}
 ```
 
 ### 4.三级联动数据请求优化
 
-​		你会发现三级联动在首页和搜索页都有，但切换路由的时候组件就会销毁再创建，这样dispatch就会触发多次，仓库多次向后台请求数据，所以可以把这句话放到App.vue中，这样就只触发一次了
+​ 你会发现三级联动在首页和搜索页都有，但切换路由的时候组件就会销毁再创建，这样 dispatch 就会触发多次，仓库多次向后台请求数据，所以可以把这句话放到 App.vue 中，这样就只触发一次了
 
 ```js
 export default {
@@ -687,79 +679,79 @@ export default {
 }
 ```
 
-## 7.关于Mock
+## 7.关于 Mock
 
-​		有时候后台接口没搞好，前台可以通过Mock插件模拟接口数据
+​ 有时候后台接口没搞好，前台可以通过 Mock 插件模拟接口数据
 
-  1. 安装依赖包，并且新建Mock文件夹
+1. 安装依赖包，并且新建 Mock 文件夹
 
-  2. 比如准备了Banner页的数据，可以新建banner .json写入
+2. 比如准备了 Banner 页的数据，可以新建 banner .json 写入
 
-     ```json
-     [
-         {
-             "id":"1",
-             "imgUrl":"/images/banner1.jpg"
-         },
-         ...
-     ]
-     ```
+   ```json
+   [
+       {
+           "id":"1",
+           "imgUrl":"/images/banner1.jpg"
+       },
+       ...
+   ]
+   ```
 
-		3. 然后Mock文件夹下再建立MockServe.js文件，里面这样写
+   3. 然后 Mock 文件夹下再建立 MockServe.js 文件，里面这样写
 
-     ```js
-     // 先引入mock模块
-     import Mock from 'mockjs'
-     
-     // 再把json 数据引入，注意json格式数据是默认对外暴露的，直接引入
-     import banner from './banner.json'
-     ...
-     
-     //  mock数据:第一个参数请求地址,第二个参数:请求数据
-     Mock.mock('/mock/banner', { code: 200, data: banner })
-     ...
-     
-     ```
+   ```js
+   // 先引入mock模块
+   import Mock from 'mockjs'
 
-		4. 回到入口文件，引入MockServe.js,这样才至少执行一次
+   // 再把json 数据引入，注意json格式数据是默认对外暴露的，直接引入
+   import banner from './banner.json'
+   ...
 
-		5. 再到utils下面写mockRequest.js，可以完全从request.js里面复制，但baseURL要改成'/mock'
+   //  mock数据:第一个参数请求地址,第二个参数:请求数据
+   Mock.mock('/mock/banner', { code: 200, data: banner })
+   ...
 
-     ```js
-     import axios from 'axios'
-     ...
-     const baseURL = '/mock'
-     ...
-     export default request
-     ```
+   ```
 
-		6. 最后就是写接口的时候那个api下的index.js就不止引入工具下的request了
+   4. 回到入口文件，引入 MockServe.js,这样才至少执行一次
 
-     ```js
-     // 引入假的"ajax"
-     import mockRequest from '@/utils/mockRequest.js'
-     ```
+   5. 再到 utils 下面写 mockRequest.js，可以完全从 request.js 里面复制，但 baseURL 要改成'/mock'
 
-		7. 然后就是具体应用，banner的数据三连环获取并渲染，唯一的不同就是api是mock Request. get...
+   ```js
+   import axios from 'axios'
+   ...
+   const baseURL = '/mock'
+   ...
+   export default request
+   ```
 
-		8. 后面的Floor也用到了Mock数据，穿插一个知识点，Floor在首页是复用的两次，但你在Floor组件里发请求就不对了，因为你不知道以后会有多少个Floor，所以在首页发再v-for这个Floor更好。
+   6. 最后就是写接口的时候那个 api 下的 index.js 就不止引入工具下的 request 了
 
-     所以在Home发请求，三连环，后面懂得都懂，这个本应该在轮播图后做的，因为Floor里面有轮播图，但知识点太少就整合到这了
+   ```js
+   // 引入假的"ajax"
+   import mockRequest from '@/utils/mockRequest.js'
+   ```
+
+   7. 然后就是具体应用，banner 的数据三连环获取并渲染，唯一的不同就是 api 是 mock Request. get...
+
+   8. 后面的 Floor 也用到了 Mock 数据，穿插一个知识点，Floor 在首页是复用的两次，但你在 Floor 组件里发请求就不对了，因为你不知道以后会有多少个 Floor，所以在首页发再 v-for 这个 Floor 更好。
+
+   所以在 Home 发请求，三连环，后面懂得都懂，这个本应该在轮播图后做的，因为 Floor 里面有轮播图，但知识点太少就整合到这了
 
 ## 8.轮播图相关
 
-​		这个项目有很多轮播图，所以可以单独拆个组件出来复用，每次使用都传不同的图片数组进去就是了。
+​ 这个项目有很多轮播图，所以可以单独拆个组件出来复用，每次使用都传不同的图片数组进去就是了。
 
 但是轮播图是有插件的----swiper，所以在这个组件中我们需要引入插件(先下载)
 
-​		首先在main.js中引入swiper的css文件，这样每个组件都能正确显示
+​ 首先在 main.js 中引入 swiper 的 css 文件，这样每个组件都能正确显示
 
 ```js
 // 引入轮播图的样式、
 import 'swiper/css/swiper.css'
 ```
 
-​		然后components文件夹下新建Carousel组件，里面的html这样写
+​ 然后 components 文件夹下新建 Carousel 组件，里面的 html 这样写
 
 ```html
 <template>
@@ -781,9 +773,9 @@ import 'swiper/css/swiper.css'
 </template>
 ```
 
-​		js这样写,还是先引入插件，这个组件只需要传一个list，为什么要在watch里面写呢？下面有说明，home的大轮播图是从仓库拿数据，所以在DOM结构生成的时候数据可能还没回来，这个时候new swiper是不明智的，所以在list变化后通过this.$nextTick()最新DOM结构生成后才执行轮播图逻辑，但是其他地方的轮播图是没变化的(floor)，所以要immediate: true。
+​ js 这样写,还是先引入插件，这个组件只需要传一个 list，为什么要在 watch 里面写呢？下面有说明，home 的大轮播图是从仓库拿数据，所以在 DOM 结构生成的时候数据可能还没回来，这个时候 new swiper 是不明智的，所以在 list 变化后通过 this.$nextTick()最新 DOM 结构生成后才执行轮播图逻辑，但是其他地方的轮播图是没变化的(floor)，所以要 immediate: true。
 
-​		讲清楚一点，watch是为了监听数组从无到有，但有了还不行，还没渲染，this.$nextTick()保证数据已经渲染到DOM上了，所以这时候再添加轮播图逻辑
+​ 讲清楚一点，watch 是为了监听数组从无到有，但有了还不行，还没渲染，this.$nextTick()保证数据已经渲染到 DOM 上了，所以这时候再添加轮播图逻辑
 
 ```js
 // 引入轮播图插件
@@ -828,15 +820,15 @@ export default {
 }
 ```
 
-## 9.Search模块相关
+## 9.Search 模块相关
 
-### 1.Search静态搭建与数据请求并分离Search Selector组件
+### 1.Search 静态搭建与数据请求并分离 Search Selector 组件
 
-​		还是老样子，从开发文档复制代码，然后分离Search Selector组件，接着三连环从后台整到数据，但是这个接口经常崩，所以我第一次请求到数据后就mock了
+​ 分离 Search Selector 组件，接着三连环从后台整到数据，但是这个接口经常崩，所以我第一次请求到数据后就 mock 了
 
 ### 2.动态渲染数据
 
-​		可以注意到数据有点多，数据结构复杂，所以通过Getters简化数据结构，分别展示出去，然后Search组件捞一个goods List，子组件捞另外两个，渲染不用说了吧，太简单了，有一点要提一下，数据没回来之前那个地方是undefined所以要像下面这样写|| [ ]
+​ 可以注意到数据有点多，数据结构复杂，所以通过 Getters 简化数据结构，分别展示出去，然后 Search 组件捞一个 goods List，子组件捞另外两个，渲染不用说了吧，太简单了，有一点要提一下，数据没回来之前那个地方是 undefined 所以要像下面这样写|| [ ]
 
 ```js
 // 计算属性，用于简化数据结构，拉取的时候就方便了
@@ -856,7 +848,7 @@ const getters = {
 
 ### 3.根据不同参数展示数据
 
-​		要知道不止页面才进来需要获取数据，当添加面包屑，改搜索关键词，再点不同的三级联动都需要重新获取数据，所以需要在data中依据接口的模样搞一个数据模板实时存储更新发请求
+​ 要知道不止页面才进来需要获取数据，当添加面包屑，改搜索关键词，再点不同的三级联动都需要重新获取数据，所以需要在 data 中依据接口的模样搞一个数据模板实时存储更新发请求
 
 ```js
 data() {
@@ -879,7 +871,7 @@ data() {
 
 ### 4.不同的地方发起请求
 
-​		需要发请求的地方太多了，所需要做的兼容操作也太杂了，面包屑啊排序啊脑袋都炸了，这里贴一下Search的代码就完了
+​ 需要发请求的地方太多了，所需要做的兼容操作也太杂了，面包屑啊排序啊脑袋都炸了，这里贴一下 Search 的代码就完了
 
 ```js
 {
@@ -986,7 +978,7 @@ data() {
 
 ## 10.分页器模块
 
-​		很多地方都需要分页器，所以就单独搞出一个组件，这里把代码贴出来慢慢说
+​ 很多地方都需要分页器，所以就单独搞出一个组件，这里把代码贴出来慢慢说
 
 ```html
 <template>
@@ -1033,7 +1025,7 @@ data() {
 ```js
 export default {
   name: 'Pagination',
-    //	1.首先组件接收父级传的几个重要参数，当前页码，每页展示条数，总条数，中间连续的页码数
+  //	1.首先组件接收父级传的几个重要参数，当前页码，每页展示条数，总条数，中间连续的页码数
   props: ['pageNo', 'pageSize', 'total', 'continues'],
   computed: {
     // 计算属性计算出最大的页码
@@ -1048,7 +1040,7 @@ export default {
       let end = totalPage
       // 一般情况，如果要求的中间页码数小于实际总页码数，那就
       if (continues < totalPage) {
-      	// 起始就是当前页-continues的一半
+        // 起始就是当前页-continues的一半
         start = pageNo - parseInt(continues / 2)
         // 结束就是当前页+continues的一半
         end = pageNo + parseInt(continues / 2)
@@ -1082,11 +1074,11 @@ export default {
 
 ### 1.索然无味的步骤
 
-​		和以前一样的，复制代码，然后搞三连环渲染数据，也就那样，当然跳转到商品详情页的时候需要携带商品的ID，这个应该弄成params参数。
+​ 和以前一样的，搞三连环渲染数据，也就那样，当然跳转到商品详情页的时候需要携带商品的 ID，这个应该弄成 params 参数。
 
 ### 2.放大镜部分
 
-​		这也没什么好说的,动态渲染数据，从传过来的图片展示数组里选一个展示，然后就是核心遮罩层函数
+​ 这也没什么好说的,动态渲染数据，从传过来的图片展示数组里选一个展示，然后就是核心遮罩层函数
 
 ```js
 	// 放大镜函数
@@ -1122,24 +1114,15 @@ export default {
 
 ### 3.购买产品个数的操作
 
-​		不多说，数据格式的严格约束，看代码
+​ 不多说，数据格式的严格约束，看代码
 
 ```html
 <div class="controls">
-  <input
-    autocomplete="off"
-    class="itxt"
-    v-model.number="skuNum"	//	收取的时候就只收number格式
-    @change="changeNum"	//	检测到input手动输入变更后触发函数
-  />
+  <input autocomplete="off" class="itxt" v-model.number="skuNum" //
+  收取的时候就只收number格式 @change="changeNum" //
+  检测到input手动输入变更后触发函数 />
   <a href="javascript:" class="plus" @click="skuNum++">+</a>
-  <a
-    href="javascript:"
-    class="mins"
-    @click="skuNum > 1 && skuNum--"
-  >
-    -
-  </a>
+  <a href="javascript:" class="mins" @click="skuNum > 1 && skuNum--"> - </a>
 </div>
 ```
 
@@ -1158,9 +1141,9 @@ changeNum(e) {
 
 ### 4.加入购物车
 
-​		加入购物车是要做两件事，一是把商品的信息传过去，二是要向后台发请求(参数是id和个数)，返回的是成功或者失败的Promise对象，这里用的是异步编程，其实应该用then和catch更好
+​ 加入购物车是要做两件事，一是把商品的信息传过去，二是要向后台发请求(参数是 id 和个数)，返回的是成功或者失败的 Promise 对象，这里用的是异步编程，其实应该用 then 和 catch 更好
 
-​		首先通过派发action告诉后台要加入购物车，这个具体的代码贴在前面，看得出来，具体 就是向后台发请求，返回的Promise对象只有成功或者失败，然后这个结果又会在组件的dispatch上体现出来，他也是返回Promise对象。
+​ 首先通过派发 action 告诉后台要加入购物车，这个具体的代码贴在前面，看得出来，具体 就是向后台发请求，返回的 Promise 对象只有成功或者失败，然后这个结果又会在组件的 dispatch 上体现出来，他也是返回 Promise 对象。
 
 ```js
 // 将产品添加到购物车中
@@ -1178,9 +1161,9 @@ changeNum(e) {
   }
 ```
 
-​		然后呢，当后台告诉你加入购物车成功后，就要跳转路由到add cart success了，但这时候是要把商品信息的整个对象传过去的，我们这里选择通过会话存储来传递，对象得序列化才能存储，然后带着购买数量就跳转了
+​ 然后呢，当后台告诉你加入购物车成功后，就要跳转路由到 add cart success 了，但这时候是要把商品信息的整个对象传过去的，我们这里选择通过会话存储来传递，对象得序列化才能存储，然后带着购买数量就跳转了
 
-​		当然要是加入购物车失败了就直接alert错误信息了
+​ 当然要是加入购物车失败了就直接 alert 错误信息了
 
 ```js
  async addGoods() {
@@ -1204,7 +1187,7 @@ changeNum(e) {
     }
 ```
 
-​		这时候我们来看看，add cart success那边怎么接收的
+​ 这时候我们来看看，add cart success 那边怎么接收的
 
 ```js
 export default {
@@ -1217,19 +1200,19 @@ export default {
 }
 ```
 
-​		从这开始，后面很多请求都是只返回成功或失败状态的，而不返回任何数据，所以上面action写法就经常用到
+​ 从这开始，后面很多请求都是只返回成功或失败状态的，而不返回任何数据，所以上面 action 写法就经常用到
 
 ## 12.购物车模块
 
 ### 1.搞静态
 
-​		还是和以前一样复制静态组件巴拉巴拉，不过这次暂且别三连环，要用到UUID
+​ 要用到 UUID
 
-​		为了从后台拿到好几次加的多个商品，所以需要弄个游客身份。
+​ 为了从后台拿到好几次加的多个商品，所以需要弄个游客身份。
 
 ### 2.UUID
 
-1. 第一步就是下载依赖，然后在工具文件夹下新建uuid_token.js模块
+1. 第一步就是下载依赖，然后在工具文件夹下新建 uuid_token.js 模块
 
 ```js
 // 调用uuid依赖包来生成临时身份，去官网上能看到这个引入方式
@@ -1243,7 +1226,7 @@ export const getUUID = () => {
 }
 ```
 
-2. 然后在detail的仓库中引入这个，存储一个UUID
+2. 然后在 detail 的仓库中引入这个，存储一个 UUID
 
 ```js
 // 封装游客身份模块。随机一个字符串，一旦本地有了就不能再变了
@@ -1255,7 +1238,7 @@ const state = {
 }
 ```
 
-3. 有了UUID怎么用呢，就需要在发送请求的时候带着，这时候就用到请求拦截器了
+3. 有了 UUID 怎么用呢，就需要在发送请求的时候带着，这时候就用到请求拦截器了
 
 ```js
 // 引入仓库，请求拦截器要用到存的临时身份
@@ -1272,7 +1255,7 @@ request.interceptors.request.use(config => {
 
 ### 3.获取到数据后动态展示
 
-​		这个懂得都懂，还是老样子，但是多了两个要注意的，一个是计算总的金额，一个是计算全选
+​ 这个懂得都懂，还是老样子，但是多了两个要注意的，一个是计算总的金额，一个是计算全选
 
 ```js
 computed: {
@@ -1296,18 +1279,14 @@ computed: {
 
 ### 4.商品数量那些事儿
 
-​		注意这个商品数量，只要发生了变更，就要向后台同步数据也就是发请求，这就涉及节流的问题，当然主要还有三个地方能更改商品数量，我们应该给其绑定同一个函数，传type变量区分，具体如下
+​ 注意这个商品数量，只要发生了变更，就要向后台同步数据也就是发请求，这就涉及节流的问题，当然主要还有三个地方能更改商品数量，我们应该给其绑定同一个函数，传 type 变量区分，具体如下
 
-​		值得注意的是，后台反人类，要的不是修改后的值，而是变更的值，也就是新值与旧值的差
+​ 值得注意的是，后台反人类，要的不是修改后的值，而是变更的值，也就是新值与旧值的差
 
-​		按键一直点肯定不行，所以要节流，这里是用的this.numFlag，第2和第3端代码一起看
+​ 按键一直点肯定不行，所以要节流，这里是用的 this.numFlag，第 2 和第 3 端代码一起看
 
 ```html
-<a
-  href="javascript:void(0)"
-  class="mins"
-  @click="handler('sub', -1, item)"
->
+<a href="javascript:void(0)" class="mins" @click="handler('sub', -1, item)">
   -
 </a>
 <input
@@ -1318,11 +1297,7 @@ computed: {
   :value="item.skuNum"
   @change="handler('change', $event.target.value * 1, item)"
 />
-<a
-  href="javascript:void(0)"
-  class="plus"
-  @click="handler('add', 1, item)"
->
+<a href="javascript:void(0)" class="plus" @click="handler('add', 1, item)">
   +
 </a>
 ```
@@ -1376,7 +1351,7 @@ getData() {
 
 ### 5.删除单个商品
 
-​		逻辑很简单，传个商品id就可以删了，然后仓库数据再更新，代码也很经典，不返回数据，只有成功或者失败，还是贴下代码熟悉一下吧
+​ 逻辑很简单，传个商品 id 就可以删了，然后仓库数据再更新，代码也很经典，不返回数据，只有成功或者失败，还是贴下代码熟悉一下吧
 
 ```js
 // 点击删除商品
@@ -1409,11 +1384,11 @@ getData() {
 
 ### 6.修改单个商品状态
 
-​		其实也挺简单，注意后台要的状态变量是字符的“0”和“1”，就不贴代码了，和上面很类似
+​ 其实也挺简单，注意后台要的状态变量是字符的“0”和“1”，就不贴代码了，和上面很类似
 
 ### 7.删除所有选中的商品
 
-​		这个有点东西，按照上面的思路，我们需要遍历购物车，其中为选中状态的就发个删除请求给后台，道理是这样，但实际做起来会先想到注释的部分，这样是不对的，注释回答了，所以应该采取更规范的写法，只在组件中派发一次action，然后在仓库的action书写业务逻辑，具体看第2段代码
+​ 这个有点东西，按照上面的思路，我们需要遍历购物车，其中为选中状态的就发个删除请求给后台，道理是这样，但实际做起来会先想到注释的部分，这样是不对的，注释回答了，所以应该采取更规范的写法，只在组件中派发一次 action，然后在仓库的 action 书写业务逻辑，具体看第 2 段代码
 
 ```js
 // 点击删除选中的商品
@@ -1448,13 +1423,13 @@ getData() {
   }
 ```
 
-​		从第一行看，那个注释注意了，不止可以解构出commit！
+​ 从第一行看，那个注释注意了，不止可以解构出 commit！
 
-​		为了不出现百删百错的情况，我们想到了用Promise .all()方法，上面注释有，action里面先定义一个数组，然后遍历购物车，接着把删除商品的返回Promise对象追加到数组里，再调用all方法，就能得到类似every的效果！
+​ 为了不出现百删百错的情况，我们想到了用 Promise .all()方法，上面注释有，action 里面先定义一个数组，然后遍历购物车，接着把删除商品的返回 Promise 对象追加到数组里，再调用 all 方法，就能得到类似 every 的效果！
 
 ### 8.点击全选更改所有商品状态
 
-​		这个就和7类似了，提一点，如果商品状态本就是更改全选后的，那就不用改了呗，也就是只给商品状态和全选状态不同的商品发请求，减小服务器压力
+​ 这个就和 7 类似了，提一点，如果商品状态本就是更改全选后的，那就不用改了呗，也就是只给商品状态和全选状态不同的商品发请求，减小服务器压力
 
 ```js
  // 点击全选更新所有商品状态
@@ -1492,11 +1467,11 @@ getData() {
 
 ### 1.静态组件
 
-​		没的说
+​ 没的说
 
 ### 2.注册部分
 
-​		值得注意的是，这个验证码是假的，接口接收手机号，然后返回验证码，但实际后台接收验证码的时候不会再判断。
+​ 值得注意的是，这个验证码是假的，接口接收手机号，然后返回验证码，但实际后台接收验证码的时候不会再判断。
 
 ```js
 // 用户注册
@@ -1535,7 +1510,7 @@ getData() {
 
 #### 点击登录
 
-​		当登录请求成功后，服务器会返回token，然后我们需要仓库存一个，本地存一个，为了更规范，所以我们又弄了个utils下面的token.js模块，里面写了些token的存储，获取，删除方法，在其他模块调用即可
+​ 当登录请求成功后，服务器会返回 token，然后我们需要仓库存一个，本地存一个，为了更规范，所以我们又弄了个 utils 下面的 token.js 模块，里面写了些 token 的存储，获取，删除方法，在其他模块调用即可
 
 ```js
 // 点击登录按钮
@@ -1604,16 +1579,15 @@ export const getToken = () => {
 export const removeToken = () => {
   return localStorage.removeItem('token')
 }
-
 ```
 
 #### 获取用户信息
 
-​		首先，用户登陆成功后，就需要跳转首页（目前来说是的），然后左上角显示用户信息，所以我们需要在首页的mounted发起store .dispatch('get User Info')，但这样有两个问题，一是在跳转其他页后，就需要重新发请求得到用户信息，这样不行，二是用户登录后，不应该再许他去Login，但用户可以直接地址栏输入跳转，想解决这些问题就不得不用到导航守卫。这个我们后面详解。
+​ 首先，用户登陆成功后，就需要跳转首页（目前来说是的），然后左上角显示用户信息，所以我们需要在首页的 mounted 发起 store .dispatch('get User Info')，但这样有两个问题，一是在跳转其他页后，就需要重新发请求得到用户信息，这样不行，二是用户登录后，不应该再许他去 Login，但用户可以直接地址栏输入跳转，想解决这些问题就不得不用到导航守卫。这个我们后面详解。
 
 #### 退出登录
 
-​		退出登录是在Header模块发送请求的，有两件事需要做，一是通知后台要退出登录，二是清除浏览器存储的数据（无效的token和残留用户信息）
+​ 退出登录是在 Header 模块发送请求的，有两件事需要做，一是通知后台要退出登录，二是清除浏览器存储的数据（无效的 token 和残留用户信息）
 
 ```js
 logout() {
@@ -1655,7 +1629,7 @@ CLEAR(state) {
 
 #### 导航守卫
 
-​		导航守卫分为全局，路由独享，组件内，一般就会用到全局，其他两个写起来太麻烦了，下面我直接贴出代码，直接讲解整个切换路由的逻辑
+​ 导航守卫分为全局，路由独享，组件内，一般就会用到全局，其他两个写起来太麻烦了，下面我直接贴出代码，直接讲解整个切换路由的逻辑
 
 ```js
 //	黑名单，在这个之内的就必须登录，登录后才许去
@@ -1702,7 +1676,7 @@ router.beforeEach((to, from, next) => {
   }
 ```
 
-​		上面这个逻辑非常完备了，但为了演示其他种类的功能，有些路由比如加入购物车成功，去支付等都希望路由都只从一个地方跳过来，不然统统拒接，这就用到了路由内独享守卫和组件内守卫
+​ 上面这个逻辑非常完备了，但为了演示其他种类的功能，有些路由比如加入购物车成功，去支付等都希望路由都只从一个地方跳过来，不然统统拒接，这就用到了路由内独享守卫和组件内守卫
 
 ```js
   {
@@ -1732,11 +1706,11 @@ router.beforeEach((to, from, next) => {
   }
 ```
 
-​		其实到这步后面还有几个组件没搞完，但为了逻辑连贯，就接下来再搞这些组件
+​ 其实到这步后面还有几个组件没搞完，但为了逻辑连贯，就接下来再搞这些组件
 
-## 14.trade交易页面
+## 14.trade 交易页面
 
-​		这一部分没什么好说的，都挺简单的，但从这里开始，所有的请求将不经过vuex，而采用古典的方式：main.js
+​ 这一部分没什么好说的，都挺简单的，但从这里开始，所有的请求将不经过 vuex，而采用古典的方式：main.js
 
 ```js
 // 当没有vuex的时候，可以全局引入api接口，这样就不用每个组件单独引入使用了
@@ -1774,17 +1748,17 @@ async submitOrder() {
     }
 ```
 
-## 15.Pay支付页面
+## 15.Pay 支付页面
 
-		### 1.静态页面
+    	### 1.静态页面
 
-​		静态没什么改动，我们跳转过来的时候就带着一个订单号，然后mounted里面获取到订单数据（其实就一个总金额还有二维码的codeURL），然后渲染即可。
+​ 静态没什么改动，我们跳转过来的时候就带着一个订单号，然后 mounted 里面获取到订单数据（其实就一个总金额还有二维码的 codeURL），然后渲染即可。
 
-​		漏了一点，生命周期函数中不许await！！！因为异步请求可能会导致生命周期未按规定顺序结束，拖节奏
+​ 漏了一点，生命周期函数中不许 await！！！因为异步请求可能会导致生命周期未按规定顺序结束，拖节奏
 
 ### 2.业务逻辑
 
-​		这里为了多讲点，微信支付弹窗引用了Element插件，首先main.js按需引入
+​ 这里为了多讲点，微信支付弹窗引用了 Element 插件，首先 main.js 按需引入
 
 ```js
 // 引入饿了么UI，按需引入
@@ -1796,16 +1770,16 @@ Vue.prototype.$msgbox = MessageBox
 Vue.prototype.$alert = MessageBox.alert
 ```
 
-​		然后我仔细讲讲下面的代码，先说二维码，那个插件能把下面的字符串转化为二维码图片的引用地址，就那么转化，接着就是支付逻辑
+​ 然后我仔细讲讲下面的代码，先说二维码，那个插件能把下面的字符串转化为二维码图片的引用地址，就那么转化，接着就是支付逻辑
 
-​		当点击去支付后，弹出收款码弹窗，下面的那一大坨都是Element的配置方法，先不管。直接看最后的if (!this. timer)，搞了个长轮询，打开弹窗的时候就一直问后台有没有支付，支付了就保存code并关闭弹窗和定时询问并跳转路由，没有就一直问。
+​ 当点击去支付后，弹出收款码弹窗，下面的那一大坨都是 Element 的配置方法，先不管。直接看最后的 if (!this. timer)，搞了个长轮询，打开弹窗的时候就一直问后台有没有支付，支付了就保存 code 并关闭弹窗和定时询问并跳转路由，没有就一直问。
 
-​		然后是用户点击已支付，这时候如果刹那前已经支付成功了弹窗还没来得及关闭，就会有code在data中，所以一样是关闭弹窗和定时询问并跳转路由，否则提示'别闹了，快支付'
+​ 然后是用户点击已支付，这时候如果刹那前已经支付成功了弹窗还没来得及关闭，就会有 code 在 data 中，所以一样是关闭弹窗和定时询问并跳转路由，否则提示'别闹了，快支付'
 
-​		要是点击支付遇到问题，就不再向后台问询，提示联系管理员就行，并关闭弹窗
+​ 要是点击支付遇到问题，就不再向后台问询，提示联系管理员就行，并关闭弹窗
 
 ```js
-codeUrl:"weixin://wxpay/bizpayurl?pr=vBpQZ8fzz"
+codeUrl: 'weixin://wxpay/bizpayurl?pr=vBpQZ8fzz'
 ```
 
 ```js
@@ -1871,7 +1845,7 @@ async gotoPay() {
 
 ## 16.个人中心
 
-​		最后一个组件啦，这个组件需要用到二级路由，在我的订单里渲染数据
+​ 最后一个组件啦，这个组件需要用到二级路由，在我的订单里渲染数据
 
 ```js
 {
@@ -1895,110 +1869,91 @@ async gotoPay() {
   }
 ```
 
-​		这个渲染数据有点意思，自己看注释吧，我不想打字了
+​ 这个渲染数据有点意思，自己看注释吧，我不想打字了
 
 ```html
 <!-- 渲染订单部分，有点意思，每一份订单都是一个table -->
-          <table
-            class="order-item"
-            v-for="order in myOrder.records"
-            :key="order.id"
-          >
-            <!-- table就分为表头和表体，这个表头就是订单号、时间那些 -->
-            <thead>
-              <tr>
-                <th colspan="5">
-                  <span class="ordertitle">
-                    {{ order.createTime }} 订单编号:{{ order.outTradeNo }}
-                    <span class="pull-right delete">
-                      <img src="../images/delete.png" />
-                    </span>
-                  </span>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- 而表体里面就是一个个的tr表行了，也就是订单下的各种商品，这时候有意思的来了，你会发现所有的商品共用一个收件人和总金额...也就是需要后四列td只存在一次，那么就需要v-if="index===0"，并且留下来的这份得合并:rowspan="order.orderDetailList.length"个单元格， -->
-              <tr
-                v-for="(child, index) in order.orderDetailList"
-                :key="child.id"
-              >
-                <td width="60%">
-                  <div class="typographic">
-                    <img
-                      :src="child.imgUrl"
-                      style="width: 82px; height: 82px"
-                    />
-                    <a href="#" class="block-text">
-                      {{ child.skuName }}
-                    </a>
-                    <span>x{{ child.skuNum }}</span>
-                    <a href="#" class="service">售后申请</a>
-                  </div>
-                </td>
-                <template v-if="index === 0">
-                  <td
-                    :rowspan="order.orderDetailList.length"
-                    width="8%"
-                    class="center"
-                  >
-                    {{ order.consignee }}
-                  </td>
-                  <td
-                    :rowspan="order.orderDetailList.length"
-                    width="13%"
-                    class="center"
-                    v-if="index === 0"
-                  >
-                    <ul class="unstyled">
-                      <li>总金额¥{{ order.totalAmount }}</li>
-                      <li>
-                        {{
-                          order.paymentWay === 'ONLINE'
-                            ? '在线支付'
-                            : '其他支付'
-                        }}
-                      </li>
-                    </ul>
-                  </td>
-                  <td
-                    :rowspan="order.orderDetailList.length"
-                    width="8%"
-                    class="center"
-                    v-if="index === 0"
-                  >
-                    <a href="#" class="btn">{{ order.orderStatusName }}</a>
-                  </td>
-                  <td
-                    :rowspan="order.orderDetailList.length"
-                    width="13%"
-                    class="center"
-                    v-if="index === 0"
-                  >
-                    <ul class="unstyled">
-                      <li>
-                        <a href="mycomment.html" target="_blank">评价|晒单</a>
-                      </li>
-                    </ul>
-                  </td>
-                </template>
-              </tr>
-            </tbody>
-          </table>
+<table class="order-item" v-for="order in myOrder.records" :key="order.id">
+  <!-- table就分为表头和表体，这个表头就是订单号、时间那些 -->
+  <thead>
+    <tr>
+      <th colspan="5">
+        <span class="ordertitle">
+          {{ order.createTime }} 订单编号:{{ order.outTradeNo }}
+          <span class="pull-right delete">
+            <img src="../images/delete.png" />
+          </span>
+        </span>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- 而表体里面就是一个个的tr表行了，也就是订单下的各种商品，这时候有意思的来了，你会发现所有的商品共用一个收件人和总金额...也就是需要后四列td只存在一次，那么就需要v-if="index===0"，并且留下来的这份得合并:rowspan="order.orderDetailList.length"个单元格， -->
+    <tr v-for="(child, index) in order.orderDetailList" :key="child.id">
+      <td width="60%">
+        <div class="typographic">
+          <img :src="child.imgUrl" style="width: 82px; height: 82px" />
+          <a href="#" class="block-text"> {{ child.skuName }} </a>
+          <span>x{{ child.skuNum }}</span>
+          <a href="#" class="service">售后申请</a>
+        </div>
+      </td>
+      <template v-if="index === 0">
+        <td :rowspan="order.orderDetailList.length" width="8%" class="center">
+          {{ order.consignee }}
+        </td>
+        <td
+          :rowspan="order.orderDetailList.length"
+          width="13%"
+          class="center"
+          v-if="index === 0"
+        >
+          <ul class="unstyled">
+            <li>总金额¥{{ order.totalAmount }}</li>
+            <li>
+              {{ order.paymentWay === 'ONLINE' ? '在线支付' : '其他支付' }}
+            </li>
+          </ul>
+        </td>
+        <td
+          :rowspan="order.orderDetailList.length"
+          width="8%"
+          class="center"
+          v-if="index === 0"
+        >
+          <a href="#" class="btn">{{ order.orderStatusName }}</a>
+        </td>
+        <td
+          :rowspan="order.orderDetailList.length"
+          width="13%"
+          class="center"
+          v-if="index === 0"
+        >
+          <ul class="unstyled">
+            <li>
+              <a href="mycomment.html" target="_blank">评价|晒单</a>
+            </li>
+          </ul>
+        </td>
+      </template>
+    </tr>
+  </tbody>
+</table>
 ```
 
 ## 17.图片懒加载
 
-​		项目最后的优化，图片懒加载，还是会用到插件
+​ 项目最后的优化，图片懒加载，还是会用到插件
 
 ```js
 // 引入懒加载插件
 import VueLazyload from 'vue-lazyload'
 
 // 插入懒加载插件，这个插件的唯一用的地方只有search的商品图，去那里看
-const loadimage = require('@/assets/images/头像.jpg')	//	还没加载出来用来替代的图
-const errorimage = require('@/assets/images/头像.jpg')//	加载错误用来替代的图
-Vue.use(VueLazyload, {	//	插件自己的用法，可以去它官网上看
+const loadimage = require('@/assets/images/头像.jpg') //	还没加载出来用来替代的图
+const errorimage = require('@/assets/images/头像.jpg') //	加载错误用来替代的图
+Vue.use(VueLazyload, {
+  //	插件自己的用法，可以去它官网上看
   preLoad: 1.3,
   error: errorimage,
   loading: loadimage,
@@ -2012,17 +1967,17 @@ Vue.use(VueLazyload, {	//	插件自己的用法，可以去它官网上看
 <div class="p-img">
   <!-- 点击这里是想带商品详情页 -->
   <router-link :to="`/detail/${goods.id}`">
-  <!-- 这里用了懒加载插件的自定义指令 -->
-  <img v-lazy="goods.defaultImg" />
+    <!-- 这里用了懒加载插件的自定义指令 -->
+    <img v-lazy="goods.defaultImg" />
   </router-link>
 </div>
 ```
 
 ## 18.最后
 
-​		最后，还有个表单验证的插件使用，因为之前搞登录注册没有验证，但是我懒得搞了，以后用到的时候再说吧，还有就是什么路由懒加载都是已经用过的，就不写了
+​ 最后，还有个表单验证的插件使用，因为之前搞登录注册没有验证，但是我懒得搞了，以后用到的时候再说吧，还有就是什么路由懒加载都是已经用过的，就不写了
 
-​		项目打包后，你会发现dist里面的js里面有map文件，这是用来快速查找错误的，但项目上线后怎么可能会允许报错呢，这该在开发阶段就处理好，所以想要打包的时候不生成.map文件就在vue.config.js里面这样写
+​ 项目打包后，你会发现 dist 里面的 js 里面有 map 文件，这是用来快速查找错误的，但项目上线后怎么可能会允许报错呢，这该在开发阶段就处理好，所以想要打包的时候不生成.map 文件就在 vue.config.js 里面这样写
 
 ```js
 const { defineConfig } = require('@vue/cli-service')
@@ -2040,14 +1995,6 @@ module.exports = defineConfig({
   // 项目打包上线后JS文件夹会有很多个map文件，如果运行报错，是不知道哪行的bug的，但有了map文件就可以准确地输出哪行哪列有错，但已经打包了就没必要再用了，不在开发阶段解决等啥呢
   productionSourceMap: false
 })
-
 ```
 
-​		终于写完了！！！
-
-
-
-
-
-
-
+​ 终于写完了！！！
